@@ -11,11 +11,11 @@
         username: "{{ username }}"
         password: "{{ password }}"
         validate_certs: no
-        tenant: 00_RH_ANSIBLE_TENANT_DEMO
-        ap: rh_ap_demo
-        epg: rh_epg_demo
-        description: rh_epg_demo
-        bd: rh_bd_demo
+        tenant: 00_NORVILLE_ANSIBLE_DEMO
+        ap: rh_norville_ap_demo
+        epg: rh_norville_epg_demo
+        description: rh_norville_epg_demo
+        bd: rh_bd_demo1
         priority: unspecified
         intra_epg_isolation: unenforced
         state: absent

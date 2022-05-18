@@ -1,58 +1,20 @@
 ---
-- name: ACI Demo create BD bridge domain
+- name: ACI Demo create BD bridge domains
   hosts: aci
   connection: local
   gather_facts: no
 
   tasks:
-    - name: Add Bridge Domain1
+    - name: Create Bridge Domains
       cisco.aci.aci_bd:
         hostname: "{{ inventory_hostname }}"
         username: "{{ username }}"
         password: "{{ password }}"
         validate_certs: no
-        tenant: 00_RH_ANSIBLE_TENANT_DEMO
-        bd: rh_bd_demo1
-        mac_address: 00:22:BD:F8:19:FE
-        vrf: rh_vrf_demo
+        tenant: "{{ the_tenant }}"
+        bd: "{{ item }}"
+        mac_address: "{{ the_mac }}"
+        vrf: "{{ the_vrf }}"
         state: present
-      delegate_to: localhost
-
-    - name: Add Bridge Domain2
-      cisco.aci.aci_bd:
-        hostname: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
-        validate_certs: no
-        tenant: 00_RH_ANSIBLE_TENANT_DEMO
-        bd: rh_bd_demo2
-        mac_address: 00:22:BD:F8:19:FE
-        vrf: rh_vrf_demo
-        state: present
-      delegate_to: localhost
-
-    - name: Add Bridge Domain3
-      aci_bd:
-        hostname: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
-        validate_certs: no
-        tenant: 00_RH_ANSIBLE_TENANT_DEMO
-        bd: rh_bd_demo3
-        mac_address: 00:22:BD:F8:19:FE
-        vrf: rh_vrf_demo
-        state: present
-      delegate_to: localhost
-
-    - name: Add Bridge Domain4
-      aci_bd:
-        hostname: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
-        validate_certs: no
-        tenant: 00_RH_ANSIBLE_TENANT_DEMO
-        bd: rh_bd_demo4
-        mac_address: 00:22:BD:F8:19:FE
-        vrf: rh_vrf_demo
-        state: present
+      loop: "{{ the_bds }}"
       delegate_to: localhost

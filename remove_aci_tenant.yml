@@ -4,6 +4,7 @@
   connection: local
   gather_facts: no
 
+
   tasks:
     - name: Remove ACI Tenant <ANSIBLE_TENANT>
       cisco.aci.aci_tenant:
@@ -11,6 +12,5 @@
         username: "{{ username }}"
         password: "{{ password }}"
         validate_certs: no
-        tenant: 00_RH_ANSIBLE_TENANT_DEMO
-        description: Create by RH_Ansible!
+        tenant: "{{ the_tenant }}" 
         state: absent

@@ -1,33 +1,33 @@
 ---
-- name: ACI Demo create epg
+- name: ACI Demo create an API and an EPG
   hosts: aci
   connection: local
   gather_facts: no
 
   tasks:
-    - name: Create ACI AP RH_AP_DEMO
+    - name: Create an ACI Application profile
       cisco.aci.aci_ap:
         hostname: "{{ inventory_hostname }}"
         username: "{{ username }}"
         password: "{{ password }}"
         validate_certs: no
-        tenant: 00_RH_ANSIBLE_TENANT_DEMO
-        ap: rh_ap_demo
-        description: rh_ap_demo
+        tenant: "{{ the_tenant }}"
+        ap: "{{ the_ap }}"
+        description: AP created by Ansible
         state: present
       delegate_to: localhost
 
-    - name: Create ACI EPG RH_EPG_DEMO
+    - name: Create an ACI EPG 
       cisco.aci.aci_epg:
         hostname: "{{ inventory_hostname }}"
         username: "{{ username }}"
         password: "{{ password }}"
         validate_certs: no
-        tenant: 00_RH_ANSIBLE_TENANT_DEMO
-        ap: rh_ap_demo
-        epg: rh_epg_demo
-        description: rh_epg_demo
-        bd: rh_bd_demo
+        tenant: "{{ the_tenant }}"
+        ap: "{{ the_ap }}"
+        epg: "{{ the_epg }}"
+        description: EPG Created by Ansible
+        bd: "{{ the_bds.0 }}"
         priority: unspecified
         intra_epg_isolation: unenforced
         state: present

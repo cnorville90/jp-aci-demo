@@ -10,8 +10,7 @@
         username: "{{ username }}"
         password: "{{ password }}"
         validate_certs: no
-        tenant: 00_RH_ANSIBLE_TENANT_DEMO
-        description: RH_Ansible_Demo
+        tenant: "{{ the_tenant }}"
         state: query
       register: output
 

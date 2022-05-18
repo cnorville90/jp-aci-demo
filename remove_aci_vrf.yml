@@ -3,16 +3,19 @@
   hosts: aci
   connection: local
   gather_facts: no
+  vars:
+    the_tenant: 00_NORVILLE_ANSIBLE_DEMO
+    the_vrf: norville_vrf_demo
 
   tasks:
-    - name: Add a new VRF to a tenant
+    - name: Remove a VRF from a tenant
       cisco.aci.aci_vrf:
         hostname: "{{ inventory_hostname }}"
         username: "{{ username }}"
         password: "{{ password }}"
-        vrf: rh_vrf_demo
-        tenant: 00_RH_ANSIBLE_TENANT_DEMO
-        descr: rh_vrf_demo
+        validate_certs: no
+        vrf: "{{ the_vrf }}"
+        tenant: "{{ the_tenant }}"
         policy_control_preference: enforced
         policy_control_direction: ingress
         state: absent

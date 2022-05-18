@@ -1,0 +1,12 @@
+username: admin 
+password: "!v3G@!4@Y"
+the_tenant: 00_NORVILLE_ANSIBLE_DEMO
+the_vrf: norville_vrf_demo
+the_mac: 00:22:BD:F8:19:FE
+the_ap: norville_ap_demo
+the_epg: norville_epg_demo
+the_bds:
+  - norville_bd_demo1 
+  - norville_bd_demo2 
+  - norville_bd_demo3 
+  - norville_bd_demo4 

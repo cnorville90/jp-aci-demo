@@ -1,18 +1,19 @@
 ---
-- name: ACI Demo create VRF
+- name: ACI Demo Create VRF in a tenant
   hosts: aci
   connection: local
   gather_facts: no
 
   tasks:
-    - name: Get a new VRF to a tenant
+    - name: Create a new VRF in an ACI tenant "{{ the_tenant }}"
       cisco.aci.aci_vrf:
         hostname: "{{ inventory_hostname }}"
         username: "{{ username }}"
         password: "{{ password }}"
-        vrf: rh_vrf_demo
-        tenant: 00_RH_ANSIBLE_TENANT_DEMO
-        descr: rh_vrf_demo
+        validate_certs: no
+        vrf: "{{ the_vrf }}"
+        tenant: "{{ the_tenant }}"
+        descr: VRF Created by Ansible 
         policy_control_preference: enforced
         policy_control_direction: ingress
         state: present

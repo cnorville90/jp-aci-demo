@@ -5,12 +5,12 @@
   gather_facts: no
 
   tasks:
-    - name: Get ACI Tenant RH_ANSIBLE_TENANT_DEMO
+    - name: Create an ACI Tenant "{{ the_tenant }}"
       cisco.aci.aci_tenant:
         hostname: "{{ inventory_hostname }}"
         username: "{{ username }}"
         password: "{{ password }}"
         validate_certs: no
-        tenant: 00_RH_ANSIBLE_TENANT_DEMO
-        description: RH_Ansible_Demo
+        tenant: "{{ the_tenant }}"
+        description: "Tenant created by Red Hat Ansible Automation Platform"
         state: present
