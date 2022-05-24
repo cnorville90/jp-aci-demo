@@ -12,10 +12,10 @@
         password: "{{ password }}"
         validate_certs: no
         tenant: 00_NORVILLE_ANSIBLE_DEMO
-        ap: rh_norville_ap_demo
-        epg: rh_norville_epg_demo
+        ap: "{{ the_ap }}"
+        epg: "{{ the_epg }}"
         description: rh_norville_epg_demo
-        bd: rh_bd_demo1
+        bd: "{{ the_bds }}"
         priority: unspecified
         intra_epg_isolation: unenforced
         state: absent
